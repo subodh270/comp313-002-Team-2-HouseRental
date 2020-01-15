@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "825874360565",
+    "firebase_url": "https://houserentals-20af4.firebaseio.com",
+    "project_id": "houserentals-20af4",
+    "storage_bucket": "houserentals-20af4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825874360565:android:10289d6fc8749d34fefdbc",
+        "android_client_info": {
+          "package_name": "com.example.houserentals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825874360565-1qf6fh207sm8b7d7cvovu7ran85v1d9r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.houserentals",
+            "certificate_hash": "4cce1fc40a3b4f62da1ed9054bad79824a4b0e65"
+          }
+        },
+        {
+          "client_id": "825874360565-f71kai1ejb8uulpbsjl746hsn3be58i7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.houserentals",
+            "certificate_hash": "95ceffa976894fdc7a38bdc57bcf6cc3067dd11e"
+          }
+        },
+        {
+          "client_id": "825874360565-92q6dsflsb53c0f7r66bnduaq3c3h8ke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIg7OD9H2AWhX6UZOSNVy2RalcF_BIvDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825874360565-92q6dsflsb53c0f7r66bnduaq3c3h8ke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
