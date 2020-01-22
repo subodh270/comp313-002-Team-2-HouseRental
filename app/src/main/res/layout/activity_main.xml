@@ -18,18 +18,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:fontFamily="casual"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="casual"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
