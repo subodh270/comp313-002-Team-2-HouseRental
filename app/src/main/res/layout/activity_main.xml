@@ -28,7 +28,7 @@
             android:fontFamily="casual"
             android:text="Login"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@android:color/holo_blue_dark"
             android:textSize="36sp" />
 
     <LinearLayout
