@@ -11,6 +11,7 @@ public class Advertisement {
     private String price;
     private String url;
 
+
     public Advertisement() {
 
     }

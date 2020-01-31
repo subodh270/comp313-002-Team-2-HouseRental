@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity  {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                                     if (task.isSuccessful()) {
-                                       Intent intent = new Intent(MainActivity.this, OtpActivity.class);
+                                       Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
 ////                                        intent.putExtra("otp", generatedPassword);
                                        startActivity(intent);
                                         ProgressBar pb = findViewById(R.id.progress);
