@@ -1,145 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/white_plain1"
     tools:context=".MainActivity">
-    <ProgressBar
-        android:id="@+id/progress"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-    <LinearLayout
-        android:id="@+id/root"
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/scrollView"
+        android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:id="@+id/root"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:fontFamily="casual"
-            android:text="Login"
-            android:textAlignment="center"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="36sp" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            >
+            <ProgressBar
+                android:id="@+id/progress"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/house_rental1"
+                android:layout_gravity="center"
+                />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="UserName" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Password" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPassword" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_weight="1"
-            android:text="User/Admin" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radioButton"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="User" />
+                android:text="Welcome to House Rental"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:textSize="30dp"
+                android:layout_marginTop="20dp"
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
+                />
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Admin" />
-        </RadioGroup>
+                android:inputType="textEmailAddress"
+                android:hint="Username"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_keyboard_"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Login" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Signup" />
-    </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="User" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Admin" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text="Login"
+                android:background="@drawable/button"
+                android:layout_marginTop="15dp"
+                android:drawablePadding="15dp"
+                />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text="New to HR? Sign Up"
+                android:background="@drawable/button"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="15dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
