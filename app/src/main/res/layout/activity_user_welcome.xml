@@ -5,23 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backimg"
     tools:context=".UserWelcomeActivity">
 
-    <Button
-        android:id="@+id/button10"
+    <LinearLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Ads" />
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Post ad" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/house_rental1"
+            android:layout_gravity="center"
+            />
 
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Log Out" />
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="15dp"
+            android:text="View Ads"
+            />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="15dp"
+            android:text="Post ad" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="15dp"
+            android:text="Log Out" />
+
+    </LinearLayout>
+
 </LinearLayout>
