@@ -128,7 +128,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
 
+                                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                     User user = new User(
+                                            userId,
                                             email,
                                             name,
                                             Long.parseLong(phone)
