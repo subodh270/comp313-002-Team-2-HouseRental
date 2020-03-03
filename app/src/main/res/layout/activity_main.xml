@@ -83,8 +83,6 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
-
-
                 <RadioGroup
                     android:id="@+id/radioGroup"
                     android:layout_width="wrap_content"

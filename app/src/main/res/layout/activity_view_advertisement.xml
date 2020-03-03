@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backimg">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -12,10 +13,15 @@
         android:layout_height="match_parent" />
     <Button
         android:id="@+id/openPopup"
-        android:layout_alignParentBottom="true"
-        android:text="Sort"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button"
+        android:text="Sort"
+
+        />
+
+
     <RelativeLayout
         android:id="@+id/sortByRange"
         android:visibility="gone"
@@ -46,15 +52,21 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:hint="Enter min range"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                android:drawablePadding="15dp"/>
             <EditText
                 android:id="@+id/max"
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:hint="Enter max range"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                android:drawablePadding="15dp"/>
             <TextView
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
@@ -77,8 +89,12 @@
             <Button
                 android:id="@+id/rangeClick1"
                 android:text="Sort"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button"
+                android:drawablePadding="15dp"
+
+                />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

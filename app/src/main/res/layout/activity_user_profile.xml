@@ -5,80 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backimg"
     tools:context=".UserProfileActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/house_rental1"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:layout_marginTop="20dp" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name" />
 
-            <EditText
-                android:id="@+id/editText30"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
+        <EditText
+            android:id="@+id/editText30"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Name"
+            android:textColorHint="#000000"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/editText35"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email Id"
+            android:textColorHint="#000000"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email" />
 
-            <EditText
-                android:id="@+id/editText35"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
+        <EditText
+            android:id="@+id/editText36"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Phone"
+            android:textColorHint="#000000"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_smartphone"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Delete Account"
+            android:background="@drawable/button"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="15dp"
+            />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone" />
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
 
-    </TableLayout>
 
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Account"
-        android:textAlignment="center" />
-</LinearLayout>
+   </LinearLayout>
