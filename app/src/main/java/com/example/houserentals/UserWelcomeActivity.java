@@ -35,6 +35,8 @@ public class UserWelcomeActivity extends AppCompatActivity {
 
         Button postAd = (Button) findViewById(R.id.button9);
         Button viewAds = (Button) findViewById(R.id.button10);
+        Button myAds = (Button) findViewById(R.id.button15);
+        Button profile = (Button) findViewById(R.id.button13);
         Button logOut = (Button) findViewById(R.id.button11);
 
         viewAds.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +44,7 @@ public class UserWelcomeActivity extends AppCompatActivity {
 
 
                     Intent intent = new Intent(UserWelcomeActivity.this, ViewAdvertisementActivity.class);
+                    intent.putExtra("viewAds", "allAds");
                     startActivity(intent);
 
             }
@@ -52,6 +55,27 @@ public class UserWelcomeActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(UserWelcomeActivity.this, PostAdvertisementActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        myAds.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(UserWelcomeActivity.this, ViewAdvertisementActivity.class);
+                intent.putExtra("viewAds", "myAds");
+                startActivity(intent);
+
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(UserWelcomeActivity.this, UserProfileActivity.class);
                 startActivity(intent);
 
             }

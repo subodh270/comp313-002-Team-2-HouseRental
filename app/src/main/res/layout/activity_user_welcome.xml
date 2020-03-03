@@ -46,6 +46,26 @@
             android:text="Post ad" />
 
         <Button
+            android:id="@+id/button15"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="15dp"
+            android:text="My Ads" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="15dp"
+            android:text="Profile" />
+
+        <Button
             android:id="@+id/button11"
             android:layout_width="300dp"
             android:layout_height="60dp"

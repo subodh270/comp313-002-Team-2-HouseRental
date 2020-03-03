@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -53,6 +54,7 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
     //firebase objects
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +68,17 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
 
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
-        imgName = (EditText) findViewById(R.id.editText34);
+//        imgName = (EditText) findViewById(R.id.editText34);
         imageView = (ImageView) findViewById(R.id.imageView);
-        textViewShow = (TextView) findViewById(R.id.textViewShow);
+//        textViewShow = (TextView) findViewById(R.id.textViewShow);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+        mAuth = FirebaseAuth.getInstance();
 
         buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
-        textViewShow.setOnClickListener(this);
+//        textViewShow.setOnClickListener(this);
 
     }
 
@@ -133,9 +136,12 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String photoLink = uri.toString();
-                                    Advertisement advertisement  = new Advertisement(title.getText().toString(), description.getText().toString(), city.getText().toString(), price.getText().toString(), photoLink);
-                                    //adding an upload to firebase database
+
                                     String uploadId = mDatabase.push().getKey();
+
+                                    Advertisement advertisement  = new Advertisement(uploadId, title.getText().toString(), description.getText().toString(), city.getText().toString(), price.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(), photoLink);
+                                    //adding an upload to firebase database
+
                                     mDatabase.child(uploadId).setValue(advertisement);
                                 }
                             });
@@ -173,8 +179,9 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
             showFileChooser();
         } else if (view == buttonUpload) {
             uploadFile();
-        } else if (view == textViewShow) {
-
         }
+//        else if (view == textViewShow) {
+//
+//        }
     }
 }

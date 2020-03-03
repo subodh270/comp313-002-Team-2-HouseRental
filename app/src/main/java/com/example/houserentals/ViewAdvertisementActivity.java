@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,8 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
     //database reference
     private DatabaseReference mDatabase;
 
+    private FirebaseAuth mAuth;
+
     //progress dialog
     private ProgressDialog progressDialog;
 
@@ -43,6 +47,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_advertisement);
+
         Button open = (Button) findViewById(R.id.openPopup);
         final  RelativeLayout pop = (RelativeLayout)findViewById(R.id.sortByRange);
 
@@ -87,37 +92,71 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
         advertisementList = new ArrayList<>();
 
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+        mAuth = FirebaseAuth.getInstance();
 
 
+        if (getIntent().getStringExtra("viewAds").equals("myAds")){
 
+            //adding an event listener to fetch values
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    //dismissing the progress dialog
+                    progressDialog.dismiss();
 
-        //adding an event listener to fetch values
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                //dismissing the progress dialog
-                progressDialog.dismiss();
-
-                //iterating through all the values in database
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Advertisement advertisement= postSnapshot.getValue(Advertisement.class);
+                    //iterating through all the values in database
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        Advertisement advertisement = postSnapshot.getValue(Advertisement.class);
 //                    Upload upload = postSnapshot.getValue(Upload.class);
-                    advertisementList.add(advertisement);
+                        String userId = advertisement.getUserId();
+                        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        if( userId !=null && userId.equals(currentUserId)){
+                            advertisementList.add(advertisement);
+                        }
+
+                    }
+                    //creating adapter
+                    adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList);
+
+                    //adding adapter to recyclerview
+                    recyclerView.setAdapter(adapter);
                 }
-                //creating adapter
-                adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList);
 
-                //adding adapter to recyclerview
-                recyclerView.setAdapter(adapter);
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    progressDialog.dismiss();
+                }
+            });
+        }
+        else {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                progressDialog.dismiss();
-            }
-        });
+            //adding an event listener to fetch values
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    //dismissing the progress dialog
+                    progressDialog.dismiss();
 
+                    //iterating through all the values in database
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        Advertisement advertisement = postSnapshot.getValue(Advertisement.class);
+//                    Upload upload = postSnapshot.getValue(Upload.class);
+                        advertisementList.add(advertisement);
+                    }
+                    //creating adapter
+                    adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList);
 
+                    //adding adapter to recyclerview
+                    recyclerView.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    progressDialog.dismiss();
+                }
+            });
+
+        }
 
 //        //creating recyclerview adapter
 //        AdvertisementAdapter adapter = new AdvertisementAdapter(this, advertisementList);

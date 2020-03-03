@@ -99,14 +99,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Choose" />
+                    android:text="Choose Image" />
 
-                <EditText
-                    android:id="@+id/editText34"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:hint="Enter name for Image" />
             </TableRow>
 
         </TableLayout>
@@ -133,15 +127,6 @@
             android:layout_weight="1"
             android:text="Upload" />
 
-        <TextView
-            android:id="@+id/textViewShow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="View Uploads"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

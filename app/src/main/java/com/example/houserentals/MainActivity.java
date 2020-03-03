@@ -83,15 +83,20 @@ public class MainActivity extends AppCompatActivity  {
                                        Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
 ////                                        intent.putExtra("otp", generatedPassword);
                                        startActivity(intent);
-                                        ProgressBar pb = findViewById(R.id.progress);
-                                        pb.setVisibility(View.VISIBLE);
-                                        LinearLayout root = findViewById(R.id.root);
-                                        root.setVisibility(View.GONE);
+//  ----------------------------------------------------------------------------------------------
+//  uncomment this part for sms working
+//                                        ProgressBar pb = findViewById(R.id.progress);
+//                                        pb.setVisibility(View.VISIBLE);
+//                                        LinearLayout root = findViewById(R.id.root);
+//                                        root.setVisibility(View.GONE);
+//
+//                                        Query query = FirebaseDatabase.getInstance().getReference("Users")
+//                                                .orderByChild("email")
+//                                                .equalTo(username);
+//                                        query.addListenerForSingleValueEvent(valueEventListener);
+//   -------------------------------------------------------------------------------------------------------
 
-                                        Query query = FirebaseDatabase.getInstance().getReference("Users")
-                                                .orderByChild("email")
-                                                .equalTo(username);
-                                        query.addListenerForSingleValueEvent(valueEventListener);
+//     ----------------------------------------------------------------------------------------------------------
 //                                        Random random = new Random();
 //                                        String generatedPassword = String.format("%04d", random.nextInt(10000));
 //
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity  {
 
 //                                        Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
 //                                        progressBar.setVisibility(View.GONE);
-
+//    -----------------------------------------------------------------------------------------------------------------------
 
 
                                     }
@@ -171,51 +176,56 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
     }
+//------------------------------------------------------------------------------------------------------------------
+// uncomment this part for sms working
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        ProgressBar pb = findViewById(R.id.progress);
+//        pb.setVisibility(View.GONE);
+//        LinearLayout root = findViewById(R.id.root);
+//        root.setVisibility(View.VISIBLE);
+//    }
+//
+//    ValueEventListener valueEventListener = new ValueEventListener() {
+//        @Override
+//        public void onDataChange(DataSnapshot dataSnapshot) {
+//            if (dataSnapshot.exists()) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    user = snapshot.getValue(User.class);
+//                    openOtpScreen(user.getPhone().toString());
+//                }
+//            }
+//        }
+//
+//        @Override
+//        public void onCancelled(DatabaseError databaseError) {
+//
+//            ProgressBar pb = findViewById(R.id.progress);
+//            pb.setVisibility(View.GONE);
+//            LinearLayout root = findViewById(R.id.root);
+//            root.setVisibility(View.VISIBLE);
+//        }
+//    };
+//
+//    public void sendSMS(View view){
+//
+//        SmsManager mySmsManager = SmsManager.getDefault();
+//        mySmsManager.sendTextMessage("5544",null, "1234", null, null);
+//    }
+//
+//
+//    public void openOtpScreen(String phoneNumber){
+//        Intent intent = new Intent(MainActivity.this, OtpActivity.class);
+//                                        intent.putExtra("phone", phoneNumber);
+//                                        startActivity(intent);
+//    }
+// ----------------------------------------------------------------------------------------------------------
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ProgressBar pb = findViewById(R.id.progress);
-        pb.setVisibility(View.GONE);
-        LinearLayout root = findViewById(R.id.root);
-        root.setVisibility(View.VISIBLE);
-    }
-
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot.exists()) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    user = snapshot.getValue(User.class);
-                    openOtpScreen(user.getPhone().toString());
-                }
-            }
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-            ProgressBar pb = findViewById(R.id.progress);
-            pb.setVisibility(View.GONE);
-            LinearLayout root = findViewById(R.id.root);
-            root.setVisibility(View.VISIBLE);
-        }
-    };
-
-    public void sendSMS(View view){
-
-        SmsManager mySmsManager = SmsManager.getDefault();
-        mySmsManager.sendTextMessage("5544",null, "1234", null, null);
-    }
 
 
-    public void openOtpScreen(String phoneNumber){
-        Intent intent = new Intent(MainActivity.this, OtpActivity.class);
-                                        intent.putExtra("phone", phoneNumber);
-                                        startActivity(intent);
-    }
-
-
+// -----------------------------------------------------------------------------------
+// this way sms do not work
 //    protected void sendSMSMessage() {
 //
 //
@@ -251,4 +261,5 @@ public class MainActivity extends AppCompatActivity  {
 //        }
 //
 //    }
+//-----------------------------------------------------------------------------------------------------------------
 }
