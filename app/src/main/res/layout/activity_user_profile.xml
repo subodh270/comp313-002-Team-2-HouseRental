@@ -41,6 +41,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="Name"
+            android:focusable="false"
+            android:clickable="false"
             android:textColorHint="#000000"
             android:layout_gravity="center"
             android:drawableLeft="@drawable/ic_person"
@@ -56,6 +58,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="Email Id"
+            android:focusable="false"
+            android:clickable="false"
             android:textColorHint="#000000"
             android:layout_gravity="center"
             android:drawableLeft="@drawable/ic_person"
@@ -72,6 +76,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="Phone"
+            android:focusable="false"
+            android:clickable="false"
             android:textColorHint="#000000"
             android:layout_gravity="center"
             android:drawableLeft="@drawable/ic_smartphone"
@@ -80,6 +86,16 @@
             android:background="@drawable/edit"
             android:padding="20dp"
             />
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Update Account"
+            android:background="@drawable/button"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="15dp" />
 
         <Button
             android:id="@+id/button14"
@@ -95,5 +111,4 @@
     </LinearLayout>
 
 
-
-   </LinearLayout>
+ </LinearLayout>

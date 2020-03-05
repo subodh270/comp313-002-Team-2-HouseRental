@@ -29,10 +29,13 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     //we are storing all the Advertisements in a list
     private List<Advertisement> AdvertisementList;
 
+    private String adsType;
+
     //getting the context and Advertisement list with constructor
-    public AdvertisementAdapter(Context mCtx, List<Advertisement> AdvertisementList) {
+    public AdvertisementAdapter(Context mCtx, List<Advertisement> AdvertisementList, String adsType) {
         this.mCtx = mCtx;
         this.AdvertisementList = AdvertisementList;
+        this.adsType = adsType;
     }
 
     @Override
@@ -75,11 +78,20 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
 
 //                Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(mCtx, AdvertisementDetailActivity.class);
+                Intent intent;
+                if(adsType.equals("myAds")) {
+                    intent = new Intent(mCtx, EditAdvertisementActivity.class);
+                }
+                else {
+                    intent = new Intent(mCtx, AdvertisementDetailActivity.class);
+                }
+
+                intent.putExtra("advId", Advertisement.getAdvertisementId());
                 intent.putExtra("title", Advertisement.getTitle());
                 intent.putExtra("description", Advertisement.getShortdesc());
                 intent.putExtra("city", Advertisement.getCity());
                 intent.putExtra("price", Advertisement.getPrice());
+                intent.putExtra("userId", Advertisement.getUserId());
                 intent.putExtra("image_url", Advertisement.getUrl());
                 mCtx.startActivity(intent);
             }

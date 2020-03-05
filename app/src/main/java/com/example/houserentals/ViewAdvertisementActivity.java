@@ -42,7 +42,6 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
     //a list to store all the products
     List<Advertisement> advertisementList;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +49,8 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
 
         Button open = (Button) findViewById(R.id.openPopup);
         final  RelativeLayout pop = (RelativeLayout)findViewById(R.id.sortByRange);
+
+        final String viewAds = getIntent().getStringExtra("viewAds");
 
         Button rangeClick1 = (Button) findViewById(R.id.rangeClick1);
         open.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
                 }catch (Exception e){
 
                 }
-                filterByPrice(minPrice, maxPrice);
+                filterByPrice(minPrice, maxPrice, viewAds);
                 pop.setVisibility(View.GONE);
             }
         });
@@ -95,7 +96,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        if (getIntent().getStringExtra("viewAds").equals("myAds")){
+        if (viewAds.equals("myAds")){
 
             //adding an event listener to fetch values
             mDatabase.addValueEventListener(new ValueEventListener() {
@@ -116,7 +117,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
 
                     }
                     //creating adapter
-                    adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList);
+                    adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList, viewAds);
 
                     //adding adapter to recyclerview
                     recyclerView.setAdapter(adapter);
@@ -144,7 +145,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
                         advertisementList.add(advertisement);
                     }
                     //creating adapter
-                    adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList);
+                    adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList, viewAds);
 
                     //adding adapter to recyclerview
                     recyclerView.setAdapter(adapter);
@@ -164,7 +165,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
 //        //setting adapter to recyclerview
 //        recyclerView.setAdapter(adapter);
     }
-    private void filterByPrice(int minPrice, int maxPrice){
+    private void filterByPrice(int minPrice, int maxPrice, String viewAds){
         List<Advertisement> sortedAdvertisementList = new ArrayList<>();
         List<Advertisement> finalSortedAdvertisementList = new ArrayList<>();
         if(minPrice==0 && maxPrice ==0){
@@ -191,7 +192,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
                 }
             }
         }
-        adapter = new AdvertisementAdapter(getApplicationContext(), finalSortedAdvertisementList);
+        adapter = new AdvertisementAdapter(getApplicationContext(), finalSortedAdvertisementList, viewAds);
 
         //adding adapter to recyclerview
         recyclerView.setAdapter(adapter);

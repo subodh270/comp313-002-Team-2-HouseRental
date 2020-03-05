@@ -19,7 +19,7 @@ public class Advertisement {
 
     }
 
-    public Advertisement(String advertisementId, String title, String shortdesc, String city, String price,String userId, String url) {
+    public Advertisement(String advertisementId, String title, String shortdesc, String city, String price, String userId, String url) {
 
         this.advertisementId = advertisementId;
         this.title = title;

@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +46,7 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         Button delete = (Button) findViewById(R.id.button14);
+        Button update = (Button) findViewById(R.id.button16);
         final EditText nameEditText = findViewById(R.id.editText30);
         final EditText emailEditText = findViewById(R.id.editText35);
         final EditText phoneEditText = findViewById(R.id.editText36);
@@ -72,6 +75,65 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
+        update.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(UserProfileActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.dialog_update_profile, null);
+                dialogBuilder.setView(dialogView);
+
+                Button updateDialog = (Button) dialogView.findViewById(R.id.button17);
+                final EditText nameUpdateText = dialogView.findViewById(R.id.editText34);
+                final EditText phoneUpdateText = dialogView.findViewById(R.id.editText37);
+
+                nameUpdateText.setText(user.getName());
+                phoneUpdateText.setText(user.getPhone().toString());
+
+                dialogBuilder.setTitle("Update Profile : " + user.getName().substring(0, 1).toUpperCase() + user.getName().substring(1));
+
+                final AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+
+                updateDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String nameUpdate = nameUpdateText.getText().toString();
+                        String phoneUpdate = phoneUpdateText.getText().toString();
+
+                        if (TextUtils.isEmpty(nameUpdate)){
+                            nameUpdateText.setError("Name required");
+                        }
+                        if (TextUtils.isEmpty(phoneUpdate)){
+                            nameUpdateText.setError("Phone number required");
+                        }
+
+                        User userUpdate = new User (uid, user.getEmail(), nameUpdate, Long.parseLong(phoneUpdate));
+                        dataUser.setValue(userUpdate);
+                        Toast.makeText(UserProfileActivity.this, "Profile Updated Successfully", Toast.LENGTH_LONG).show();
+
+                        // refresh profile page with new data
+                        dataUser.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                User userUpdated = dataSnapshot.getValue(User.class);
+
+                                nameEditText.setText(userUpdated.getName());
+                                emailEditText.setText(userUpdated.getEmail());
+                                phoneEditText.setText(userUpdated.getPhone().toString());
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                throw databaseError.toException();
+                            }
+                        });
+                        alertDialog.dismiss();
+                    }
+                });
+            }
+        });
 
         delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -127,6 +189,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
 
+//                                    delete profile info and ads posted and images stored before deleting the firebaseAuth user
 //                                    dataUser.removeValue();
 //
 //                                    Query queryDeleteAdvertisementsOfUser = dataAdvertisement.orderByChild("userId").equalTo(uid);
