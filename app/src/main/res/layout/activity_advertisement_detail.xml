@@ -31,7 +31,7 @@
         android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <TextView
@@ -81,13 +81,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="12dp"
+        android:textSize="15dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="55dp"
         android:orientation="horizontal">
 
         <Button

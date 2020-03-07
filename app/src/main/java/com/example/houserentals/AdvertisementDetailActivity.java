@@ -67,7 +67,7 @@ public class AdvertisementDetailActivity extends AppCompatActivity {
                 textViewTitle.setText(getIntent().getStringExtra("title"));
                 textViewShortDesc.setText(getIntent().getStringExtra("description"));
                 textViewRating.setText(getIntent().getStringExtra("city"));
-                textViewPrice.setText(getIntent().getStringExtra("price"));
+                textViewPrice.setText("CAD "+getIntent().getStringExtra("price"));
                 textViewContact.setText("Email : " + user.getEmail() + "\nPhone : " + user.getPhone());
             }
 
