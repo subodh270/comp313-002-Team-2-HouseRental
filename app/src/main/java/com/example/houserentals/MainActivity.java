@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity  {
 
         final EditText usernameEditText = findViewById(R.id.editText);
         final EditText passwordEditText = findViewById(R.id.editText2);
-        final RadioGroup radioGroup = findViewById(R.id.radioGroup);
+//        final RadioGroup radioGroup = findViewById(R.id.radioGroup);
         Button button2 = (Button) findViewById(R.id.button2);
         Button button3 = (Button) findViewById(R.id.button3);
 
@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity  {
 
                 final String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton);
-                RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+//                RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton);
+//                RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
 
-                if(radioButton.isChecked()) {
+                if(username.equalsIgnoreCase("admin@hrental.ca")) {
 
                     mAuth.signInWithEmailAndPassword(username, password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -80,9 +80,47 @@ public class MainActivity extends AppCompatActivity  {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                                     if (task.isSuccessful()) {
-                                       Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
+                                        Intent intent = new Intent(MainActivity.this, AdminWelcomeActivity.class);
 ////                                        intent.putExtra("otp", generatedPassword);
-                                       startActivity(intent);
+                                        startActivity(intent);
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+//                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+                }
+                else {
+
+                    mAuth.signInWithEmailAndPassword(username, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                    if (task.isSuccessful()) {
+                                        Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
+////                                        intent.putExtra("otp", generatedPassword);
+                                        startActivity(intent);
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+//                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+                }
+//                if(radioButton.isChecked()) {
+//
+//                    mAuth.signInWithEmailAndPassword(username, password)
+//                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                                    if (task.isSuccessful()) {
+//                                       Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
+//////                                        intent.putExtra("otp", generatedPassword);
+//                                       startActivity(intent);
 //  ----------------------------------------------------------------------------------------------
 //  uncomment this part for sms working
 //                                        ProgressBar pb = findViewById(R.id.progress);
@@ -112,15 +150,15 @@ public class MainActivity extends AppCompatActivity  {
 //                                        Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
 //                                        progressBar.setVisibility(View.GONE);
 //    -----------------------------------------------------------------------------------------------------------------------
-
-
-                                    }
-                                    else {
-                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
+//
+//
+//                                    }
+//                                    else {
+//                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+////                                        progressBar.setVisibility(View.GONE);
+//                                    }
+//                                }
+//                            });
 
 //                    if(db.checkUser("User", username, password)) {
 //                        SharedPreferences myPreference = getSharedPreferences("MySharedPreferences", 0);
@@ -134,45 +172,45 @@ public class MainActivity extends AppCompatActivity  {
 //                    else {
 //                        Toast.makeText(MainActivity.this, "Invalid User Username/Password", Toast.LENGTH_SHORT).show();
 //                    }
-
-                }
-                else if (radioButton2.isChecked()) {
-                    if(db.checkUser("Admin", username, password)) {
-                        SharedPreferences myPreference = getSharedPreferences("MySharedPreferences", 0);
-                        SharedPreferences.Editor prefEditor = myPreference.edit();
-                        prefEditor.putString("Username", username);
-                        prefEditor.commit();
-
-                        Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(MainActivity.this, "Invalid Admin Username/Password", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Select User/Admin", Toast.LENGTH_SHORT).show();
-                }
+//
+//                }
+//                else if (radioButton2.isChecked()) {
+//                    if(db.checkUser("Admin", username, password)) {
+//                        SharedPreferences myPreference = getSharedPreferences("MySharedPreferences", 0);
+//                        SharedPreferences.Editor prefEditor = myPreference.edit();
+//                        prefEditor.putString("Username", username);
+//                        prefEditor.commit();
+//
+//                        Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
+//                        startActivity(intent);
+//                    }
+//                    else {
+//                        Toast.makeText(MainActivity.this, "Invalid Admin Username/Password", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                else {
+//                    Toast.makeText(MainActivity.this, "Select User/Admin", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton);
-                RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+//                RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton);
+//                RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
 
-                if(radioButton.isChecked()) {
+//                if(radioButton.isChecked()) {
                     Intent intent = new Intent(MainActivity.this, UserRegistrationActivity.class);
                     startActivity(intent);
-                }
-                else if (radioButton2.isChecked()) {
-                    Intent intent = new Intent(MainActivity.this, AdminRegistrationActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Select User/Admin", Toast.LENGTH_SHORT).show();
-                }
+//                }
+//                else if (radioButton2.isChecked()) {
+//                    Intent intent = new Intent(MainActivity.this, AdminRegistrationActivity.class);
+//                    startActivity(intent);
+//                }
+//                else {
+//                    Toast.makeText(MainActivity.this, "Select User/Admin", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }

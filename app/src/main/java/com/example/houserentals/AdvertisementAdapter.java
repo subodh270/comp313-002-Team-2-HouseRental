@@ -79,7 +79,10 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
 //                Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
 
                 Intent intent;
-                if(adsType.equals("myAds")) {
+                if(adsType.equals("allAdsAdmin")) {
+                    intent = new Intent(mCtx, EditAdvertisementActivity.class);
+                }
+                else if(adsType.equals("myAds")) {
                     intent = new Intent(mCtx, EditAdvertisementActivity.class);
                 }
                 else {

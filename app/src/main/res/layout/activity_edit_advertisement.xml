@@ -8,13 +8,13 @@
     android:background="@drawable/backimg"
     tools:context=".EditAdvertisementActivity">
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/house_rental1"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        />
+<!--    <ImageView-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:src="@drawable/house_rental1"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        />-->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="120dp"
