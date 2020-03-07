@@ -5,155 +5,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backimg"
     tools:context=".AdminRegistrationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/house_rental1"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                />
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
         android:text="Admin Registration"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="24sp" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp">
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Employee ID" />
+         />
 
             <EditText
                 android:id="@+id/editText12"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:ems="10"
-                android:inputType="number" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Name" />
-
+                android:inputType="number"
+                android:hint="Employee Id"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
             <EditText
                 android:id="@+id/editText13"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password" />
-
+                android:inputType="textPersonName"
+                android:hint="Username"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
             <EditText
                 android:id="@+id/editText14"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:ems="10"
-                android:inputType="textPassword" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="first Name" />
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_keyboard_"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
 
             <EditText
                 android:id="@+id/editText15"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last Name" />
-
+                android:inputType="textPersonName"
+                android:hint="First Name"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
             <EditText
                 android:id="@+id/editText16"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone" />
-
+                android:inputType="textPersonName"
+                android:hint="Last Name"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
             <EditText
                 android:id="@+id/editText17"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:ems="10"
-                android:inputType="phone" />
-        </TableRow>
-
-    </TableLayout>
+                android:inputType="textPersonName"
+                android:hint="Phone"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_smartphone"
+                android:drawablePadding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit"
+                android:padding="20dp"
+                />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="15dp"
         android:text="Register" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backimg">
 
-    <EditText
-        android:id="@+id/editText34"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Name"
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editText37"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Phone"
-        android:inputType="phone" />
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/house_rental1"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Profile"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/editText34"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColorHint="#000000"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            android:hint="Enter Name"
+            android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/button17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update" />
+        <EditText
+            android:id="@+id/editText37"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColorHint="#000000"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_smartphone"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            android:hint="Enter Phone"
+            android:inputType="phone" />
+
+        <Button
+            android:id="@+id/button17"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="15dp"
+            android:text="Update" />
+
+
+    </LinearLayout>
+
 </LinearLayout>

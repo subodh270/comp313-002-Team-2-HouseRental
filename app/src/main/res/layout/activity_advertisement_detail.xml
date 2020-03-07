@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backimg"
     tools:context=".AdvertisementDetailActivity">
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/house_rental1"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        />
 
     <ImageView
         android:id="@+id/imageView"
@@ -65,8 +73,13 @@
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="GoogleMap" />
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="15dp"
+        android:text="GoogleMap"
+        />
 
 </LinearLayout>

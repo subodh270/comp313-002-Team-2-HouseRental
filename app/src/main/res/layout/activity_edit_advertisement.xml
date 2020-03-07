@@ -5,8 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backimg"
     tools:context=".EditAdvertisementActivity">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/house_rental1"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        />
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="120dp"
@@ -35,13 +43,21 @@
 
     <Button
         android:id="@+id/button18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="15dp"
         android:text="Update" />
 
     <Button
         android:id="@+id/button19"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="15dp"
         android:text="Delete" />
 </LinearLayout>
