@@ -41,8 +41,12 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imageView"
+        android:fontFamily="serif"
         android:text="13.3 Inch, 256 GB"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewRating"
@@ -71,15 +75,36 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button"
-        android:layout_marginTop="30dp"
-        android:drawablePadding="15dp"
-        android:text="GoogleMap"
-        />
+    <TextView
+        android:id="@+id/textViewContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button25"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/button"
+            android:drawablePadding="15dp"
+            android:text="Email" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:drawablePadding="15dp"
+            android:text="GoogleMap" />
+    </LinearLayout>
 
 </LinearLayout>

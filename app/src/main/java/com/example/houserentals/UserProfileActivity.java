@@ -51,12 +51,18 @@ public class UserProfileActivity extends AppCompatActivity {
         final EditText emailEditText = findViewById(R.id.editText35);
         final EditText phoneEditText = findViewById(R.id.editText36);
 
+//        String uid = getIntent().getStringExtra("uid");
+//        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getUser(uid);
+
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = firebaseUser.getUid();
+        final String email = firebaseUser.getEmail();
         final DatabaseReference dataUser =  FirebaseDatabase.getInstance().getReference("Users").child(uid);
         final DatabaseReference dataAdvertisement =  FirebaseDatabase.getInstance().getReference("uploads");
 
-
+        if(email.equalsIgnoreCase("admin@hrental.ca")) {
+            delete.setVisibility(View.GONE);
+        }
 
         dataUser.addListenerForSingleValueEvent(new ValueEventListener() {
 

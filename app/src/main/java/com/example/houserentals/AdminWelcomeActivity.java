@@ -25,6 +25,7 @@ public class AdminWelcomeActivity extends AppCompatActivity {
 
         Button viewAds = (Button) findViewById(R.id.button21);
         Button viewUsers = (Button) findViewById(R.id.button22);
+        Button profile = (Button) findViewById(R.id.button24);
         Button logOut = (Button) findViewById(R.id.button23);
 
         viewAds.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +44,17 @@ public class AdminWelcomeActivity extends AppCompatActivity {
 
 
                 //starting login activity
-                startActivity(new Intent(AdminWelcomeActivity.this, MainActivity.class));
+                startActivity(new Intent(AdminWelcomeActivity.this, ViewUsersActivity.class));
+
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                //starting login activity
+                startActivity(new Intent(AdminWelcomeActivity.this, UserProfileActivity.class));
 
             }
         });

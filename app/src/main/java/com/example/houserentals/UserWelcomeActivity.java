@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UserWelcomeActivity extends AppCompatActivity {
 
@@ -73,7 +74,6 @@ public class UserWelcomeActivity extends AppCompatActivity {
 
         profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
 
                 Intent intent = new Intent(UserWelcomeActivity.this, UserProfileActivity.class);
                 startActivity(intent);

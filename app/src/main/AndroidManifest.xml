@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditAdvertisementActivity"></activity>
+        <activity android:name=".ViewUsersActivity"></activity>
+        <activity android:name=".EditAdvertisementActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".MapActivity" />
 
