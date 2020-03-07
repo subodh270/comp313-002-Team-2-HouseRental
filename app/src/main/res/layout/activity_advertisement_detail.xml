@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/imageView"
+        android:fontFamily="sans-serif"
         android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textColor="#000000"
@@ -41,11 +42,11 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imageView"
-        android:fontFamily="serif"
+        android:fontFamily="sans-serif"
         android:text="13.3 Inch, 256 GB"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -91,12 +92,19 @@
 
         <Button
             android:id="@+id/button25"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="50dp"
-
             android:background="@drawable/button"
             android:drawablePadding="15dp"
             android:text="Email" />
+
+        <Button
+            android:id="@+id/button26"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:drawablePadding="15dp"
+            android:text="Call" />
 
         <Button
             android:id="@+id/button12"
