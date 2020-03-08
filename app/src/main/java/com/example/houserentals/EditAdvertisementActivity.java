@@ -58,7 +58,7 @@ public class EditAdvertisementActivity extends AppCompatActivity {
                 textViewTitle.setText(advertisement.getTitle());
                 textViewShortDesc.setText(advertisement.getShortdesc());
                 textViewCity.setText(advertisement.getCity());
-                textViewPrice.setText(advertisement.getPrice());
+                textViewPrice.setText("CAD " + advertisement.getPrice());
 
             }
 
@@ -184,7 +184,8 @@ public class EditAdvertisementActivity extends AppCompatActivity {
 
                     Toast.makeText(EditAdvertisementActivity.this, "Post deleted successfully", Toast.LENGTH_LONG).show();
                     finish();
-                    Intent intent = new Intent(EditAdvertisementActivity.this, ViewAdvertisementActivity.class);
+//                    Intent intent = new Intent(EditAdvertisementActivity.this, ViewAdvertisementActivity.class);
+                        Intent intent = new Intent(EditAdvertisementActivity.this, UserWelcomeActivity.class);
                     intent.putExtra("viewAds", "myAds");
                     startActivity(intent);
 

@@ -39,6 +39,7 @@ public class AdvertisementDetailActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
         Button map_navigation = (Button) findViewById(R.id.button12);
         Button email = (Button) findViewById(R.id.button25);
+        Button call = (Button) findViewById(R.id.button26);
 
 
         final String advId = getIntent().getStringExtra("advId");
@@ -99,6 +100,13 @@ public class AdvertisementDetailActivity extends AppCompatActivity {
             }
         });
 
+        call.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                dialPhoneNumber(user.getPhone().toString());
+            }
+        });
+
         map_navigation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -116,6 +124,14 @@ public class AdvertisementDetailActivity extends AppCompatActivity {
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    public void dialPhoneNumber(String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + phoneNumber));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
