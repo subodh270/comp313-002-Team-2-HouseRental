@@ -31,7 +31,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
     @Override
     public UsersAdapter.UsersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //inflating and returning our view holder
+
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.layout_users, null);
         return new UsersAdapter.UsersViewHolder(view);
@@ -39,10 +39,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
     @Override
     public void onBindViewHolder(UsersAdapter.UsersViewHolder holder, int position) {
-        //getting the Advertisement of the specified position
+
         final User user = userList.get(position);
 
-        //binding the data with the viewholder views
+
         holder.textViewProfileName.setText(user.getName());
         holder.textViewProfileEmail.setText(user.getEmail());
 
@@ -52,24 +52,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             public void onClick(View view) {
 
                 Intent intent;
-//                if(adsType.equals("allAdsAdmin")) {
-//                    intent = new Intent(mCtx, EditAdvertisementActivity.class);
-//                }
-//                else if(adsType.equals("myAds")) {
-//                    intent = new Intent(mCtx, EditAdvertisementActivity.class);
-//                }
-//                else {
-//                    intent = new Intent(mCtx, AdvertisementDetailActivity.class);
-//                }
 
-//                intent.putExtra("advId", Advertisement.getAdvertisementId());
-//                intent.putExtra("title", Advertisement.getTitle());
-//                intent.putExtra("description", Advertisement.getShortdesc());
-//                intent.putExtra("city", Advertisement.getCity());
-//                intent.putExtra("price", Advertisement.getPrice());
-//                intent.putExtra("userId", Advertisement.getUserId());
-//                intent.putExtra("image_url", Advertisement.getUrl());
-//                mCtx.startActivity(intent);
             }
         });
     }
@@ -84,7 +67,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
     class UsersViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewProfileName, textViewProfileEmail;
-//        ImageView imageView;
+
         LinearLayout parentLayout;
 
         public UsersViewHolder(View itemView) {

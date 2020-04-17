@@ -49,92 +49,34 @@ public class OtpActivity extends AppCompatActivity {
                 TaskExecutors.MAIN_THREAD,
                 mCallbacks);
 
-//        StartFirebaseLogin();
-//        generateOtp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String phoneNumber=phone.getText().toString();
-//                PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                        phoneNumber,                     // Phone number to verify
-//                        60,                           // Timeout duration
-//                        TimeUnit.SECONDS,                // Unit of timeout
-//                        OtpActivity.this,        // Activity (for callback binding)
-//                        mCallback);                      // OnVerificationStateChangedCallbacks
-//            }
-//        });
+
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 EditText otp = findViewById(R.id.editText27);
-                //verifying the code
+
                 verifyVerificationCode(otp.getText().toString());
-//                if(otp.getText().toString().equals(getIntent().getStringExtra("otp")))
-//                {
-//                    startActivity(new Intent(OtpActivity.this,UserWelcomeActivity.class));
-//                }
-//                else
-//                {
-//                    Toast.makeText(OtpActivity.this,"Incorrect OTP", Toast.LENGTH_SHORT).show();
-//                }
-//                String otpText=otp.getText().toString();
-//                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otpText);
-//                SigninWithPhone(credential);
+
             }
         });
     }
 
-//    private void SigninWithPhone(PhoneAuthCredential credential) {
-//        auth.signInWithCredential(credential)
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            startActivity(new Intent(OtpActivity.this,UserWelcomeActivity.class));
-//                            finish();
-//                        } else {
-//                            Toast.makeText(OtpActivity.this,"Incorrect OTP", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-//    }
-//
-//    private void StartFirebaseLogin() {
-//        auth = FirebaseAuth.getInstance();
-//        mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//            @Override
-//            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-//                Toast.makeText(OtpActivity.this,"verification completed",Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void onVerificationFailed(FirebaseException e) {
-//                Toast.makeText(OtpActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-//                super.onCodeSent(s, forceResendingToken);
-//                verificationCode = s;
-//                Toast.makeText(OtpActivity.this,"Code sent",Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//    }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
 
-            //Getting the code sent by SMS
+
             String code = phoneAuthCredential.getSmsCode();
 
-            //sometime the code is not detected automatically
-            //in this case the code will be null
-            //so user has to manually enter the code
+
             if (code != null) {
 
                 EditText otp = findViewById(R.id.editText27);
                 otp.setText(code);
-                //verifying the code
+
                 verifyVerificationCode(code);
             }
         }
@@ -148,16 +90,16 @@ public class OtpActivity extends AppCompatActivity {
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
 
-            //storing the verification id that is sent to the user
+
             mVerificationId = s;
         }
     };
 
     private void verifyVerificationCode(String code) {
-        //creating the credential
+
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
 
-        //signing the user
+
         signInWithPhoneAuthCredential(credential);
     }
 
@@ -167,14 +109,14 @@ public class OtpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //verification successful we will start the profile activity
+
                             Intent intent = new Intent(OtpActivity.this, UserWelcomeActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 
                         } else {
 
-                            //verification unsuccessful.. display an error message
+
 
                             String message = "Somthing is wrong, we will fix it soon...";
 

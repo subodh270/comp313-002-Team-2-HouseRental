@@ -67,11 +67,7 @@ public class EditAdvertisementActivity extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
-//        textViewTitle.setText(getIntent().getStringExtra("title"));
-//        textViewShortDesc.setText(getIntent().getStringExtra("description"));
-//        textViewCity.setText(getIntent().getStringExtra("city"));
-//        textViewPrice.setText(getIntent().getStringExtra("price"));
-//        textViewTitle.setText(getIntent().getStringExtra("image_url"));
+
         Glide.with(this)
                 .asBitmap()
                 .load(imgUrl)
@@ -168,23 +164,21 @@ public class EditAdvertisementActivity extends AppCompatActivity {
                     storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            // File deleted successfully
-    //                                            Log.d(TAG, "onSuccess: deleted file");
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            // Uh-oh, an error occurred!
-    //                                            Log.d(TAG, "onFailure: did not delete file");
+
                         }
                     });
 
-                    // delete post of user
+
                     dataAdvertisement.removeValue();
 
                     Toast.makeText(EditAdvertisementActivity.this, "Post deleted successfully", Toast.LENGTH_LONG).show();
                     finish();
-//                    Intent intent = new Intent(EditAdvertisementActivity.this, ViewAdvertisementActivity.class);
+
                         Intent intent = new Intent(EditAdvertisementActivity.this, UserWelcomeActivity.class);
                     intent.putExtra("viewAds", "myAds");
                     startActivity(intent);

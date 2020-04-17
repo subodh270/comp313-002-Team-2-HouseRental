@@ -51,8 +51,6 @@ public class UserProfileActivity extends AppCompatActivity {
         final EditText emailEditText = findViewById(R.id.editText35);
         final EditText phoneEditText = findViewById(R.id.editText36);
 
-//        String uid = getIntent().getStringExtra("uid");
-//        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getUser(uid);
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = firebaseUser.getUid();
@@ -118,7 +116,7 @@ public class UserProfileActivity extends AppCompatActivity {
                         dataUser.setValue(userUpdate);
                         Toast.makeText(UserProfileActivity.this, "Profile Updated Successfully", Toast.LENGTH_LONG).show();
 
-                        // refresh profile page with new data
+
                         dataUser.addListenerForSingleValueEvent(new ValueEventListener() {
 
                             @Override
@@ -151,10 +149,10 @@ public class UserProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
 
-                        // delete user information data from firebase database
+
                         dataUser.removeValue();
 
-                        // delete every post of user from database and corresponding image from firebase storage
+
                         Query queryDeleteAdvertisementsOfUser = dataAdvertisement.orderByChild("userId").equalTo(uid);
                         queryDeleteAdvertisementsOfUser.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -162,31 +160,29 @@ public class UserProfileActivity extends AppCompatActivity {
                                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                                     Advertisement advertisement = postSnapshot.getValue(Advertisement.class);
 
-                                    // delete image from firebase storage of each post
+
                                     String imgUrl = advertisement.getUrl();
                                     storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imgUrl);
                                     storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            // File deleted successfully
-//                                            Log.d(TAG, "onSuccess: deleted file");
+
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception exception) {
-                                            // Uh-oh, an error occurred!
-//                                            Log.d(TAG, "onFailure: did not delete file");
+
                                         }
                                     });
 
-                                    // delete post of user
+
                                     postSnapshot.getRef().removeValue();
                                 }
                             }
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-//                                          Log.e(TAG, "onCancelled", databaseError.toException());
+
                             }
                         });
 
@@ -195,26 +191,8 @@ public class UserProfileActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
 
-//                                    delete profile info and ads posted and images stored before deleting the firebaseAuth user
-//                                    dataUser.removeValue();
-//
-//                                    Query queryDeleteAdvertisementsOfUser = dataAdvertisement.orderByChild("userId").equalTo(uid);
-//                                    queryDeleteAdvertisementsOfUser.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                                            for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-//                                                postSnapshot.getRef().removeValue();
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(DatabaseError databaseError) {
-////                                          Log.e(TAG, "onCancelled", databaseError.toException());
-//                                        }
-//                                    });
-
                                     Toast.makeText(UserProfileActivity.this, "Account deleted successfully", Toast.LENGTH_LONG).show();
-//                                  Log.d(TAG, "User account deleted.");
+
                                     Intent intent = new Intent(UserProfileActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 }
@@ -239,25 +217,5 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
-//        delete.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                if (task.isSuccessful()) {
-//                                    Toast.makeText(UserProfileActivity.this, "Account deleted successfully", Toast.LENGTH_LONG).show();
-////                                  Log.d(TAG, "User account deleted.");
-//                                    Intent intent = new Intent(UserProfileActivity.this, MainActivity.class);
-//                                    startActivity(intent);
-//                                }
-//                                else {
-//                                    Toast.makeText(UserProfileActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                }
-//                            }
-//                        });
-//
-//            }
-//        });
     }
 }

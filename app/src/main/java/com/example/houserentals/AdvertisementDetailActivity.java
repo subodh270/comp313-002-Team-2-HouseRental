@@ -79,13 +79,6 @@ public class AdvertisementDetailActivity extends AppCompatActivity {
         });
         address = getIntent().getStringExtra("city");
 
-//        textViewTitle.setText(getIntent().getStringExtra("title"));
-//        textViewShortDesc.setText(getIntent().getStringExtra("description"));
-//        textViewRating.setText(getIntent().getStringExtra("city"));
-//        textViewPrice.setText(getIntent().getStringExtra("price"));
-//        textViewContact.setText(advertisement.getTitle());
-//        textViewContact.setText(user.getEmail() + ", " + user.getPhone());
-//        textViewTitle.setText(getIntent().getStringExtra("image_url"));
         Glide.with(this)
                 .asBitmap()
                 .load(getIntent().getStringExtra("image_url"))
@@ -121,7 +114,7 @@ public class AdvertisementDetailActivity extends AppCompatActivity {
 
     public void composeEmail(String[] addresses, String subject) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         if (intent.resolveActivity(getPackageManager()) != null) {

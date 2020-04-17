@@ -31,7 +31,7 @@ public class AdminInformationActivity extends AppCompatActivity {
 
         for (Object o : table) {
             ArrayList row = (ArrayList)o;
-            // Writing table to edittext
+
             employeeIdEditText.setText(row.get(0).toString());
             firstNameEditText.setText(row.get(3).toString());
             lastNameEditText.setText(row.get(4).toString());

@@ -48,11 +48,9 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                 record[4]= lastName;
                 record[5]= phone;
                 Log.d("Username: ", record[1]);
-                //populate the row with some values
+
                 ContentValues values = new ContentValues();
-                //for (int i=1;i<record.length;i++)
-                //values.put(fields[i],record[i]);
-                //add the row to the database
+
                 db.addRecord(values, "Admin", fields, record);
 
                 Intent intent = new Intent(AdminRegistrationActivity.this, AdminInformationActivity.class);

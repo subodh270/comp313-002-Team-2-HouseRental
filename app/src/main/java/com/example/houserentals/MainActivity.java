@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity  {
 
         final EditText usernameEditText = findViewById(R.id.editText);
         final EditText passwordEditText = findViewById(R.id.editText2);
-//        final RadioGroup radioGroup = findViewById(R.id.radioGroup);
+
         Button button2 = (Button) findViewById(R.id.button2);
         Button button3 = (Button) findViewById(R.id.button3);
 
@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity  {
 
                 final String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-//                RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton);
-//                RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
 
                 if(username.equalsIgnoreCase("admin@hrental.ca")) {
 
@@ -81,12 +79,12 @@ public class MainActivity extends AppCompatActivity  {
 
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent(MainActivity.this, AdminWelcomeActivity.class);
-////                                        intent.putExtra("otp", generatedPassword);
+
                                         startActivity(intent);
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                        progressBar.setVisibility(View.GONE);
+
                                     }
                                 }
                             });
@@ -100,204 +98,29 @@ public class MainActivity extends AppCompatActivity  {
 
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
-////                                        intent.putExtra("otp", generatedPassword);
+
                                         startActivity(intent);
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                        progressBar.setVisibility(View.GONE);
+
                                     }
                                 }
                             });
                 }
-//                if(radioButton.isChecked()) {
-//
-//                    mAuth.signInWithEmailAndPassword(username, password)
-//                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                                    if (task.isSuccessful()) {
-//                                       Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
-//////                                        intent.putExtra("otp", generatedPassword);
-//                                       startActivity(intent);
-//  ----------------------------------------------------------------------------------------------
-//  uncomment this part for sms working
-//                                        ProgressBar pb = findViewById(R.id.progress);
-//                                        pb.setVisibility(View.VISIBLE);
-//                                        LinearLayout root = findViewById(R.id.root);
-//                                        root.setVisibility(View.GONE);
-//
-//                                        Query query = FirebaseDatabase.getInstance().getReference("Users")
-//                                                .orderByChild("email")
-//                                                .equalTo(username);
-//                                        query.addListenerForSingleValueEvent(valueEventListener);
-//   -------------------------------------------------------------------------------------------------------
 
-//     ----------------------------------------------------------------------------------------------------------
-//                                        Random random = new Random();
-//                                        String generatedPassword = String.format("%04d", random.nextInt(10000));
-//
-//                                        try{
-//                                            SmsManager smgr = SmsManager.getDefault();
-//                                            smgr.sendTextMessage("5554",null,generatedPassword,null,null);
-//                                            Toast.makeText(MainActivity.this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show();
-//                                        }
-//                                        catch (Exception e){
-//                                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                        }
-
-//                                        Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-//                                        progressBar.setVisibility(View.GONE);
-//    -----------------------------------------------------------------------------------------------------------------------
-//
-//
-//                                    }
-//                                    else {
-//                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-////                                        progressBar.setVisibility(View.GONE);
-//                                    }
-//                                }
-//                            });
-
-//                    if(db.checkUser("User", username, password)) {
-//                        SharedPreferences myPreference = getSharedPreferences("MySharedPreferences", 0);
-//                        SharedPreferences.Editor prefEditor = myPreference.edit();
-//                        prefEditor.putString("Username", username);
-//                        prefEditor.commit();
-//
-//                        Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
-//                        startActivity(intent);
-//                    }
-//                    else {
-//                        Toast.makeText(MainActivity.this, "Invalid User Username/Password", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }
-//                else if (radioButton2.isChecked()) {
-//                    if(db.checkUser("Admin", username, password)) {
-//                        SharedPreferences myPreference = getSharedPreferences("MySharedPreferences", 0);
-//                        SharedPreferences.Editor prefEditor = myPreference.edit();
-//                        prefEditor.putString("Username", username);
-//                        prefEditor.commit();
-//
-//                        Intent intent = new Intent(MainActivity.this, UserWelcomeActivity.class);
-//                        startActivity(intent);
-//                    }
-//                    else {
-//                        Toast.makeText(MainActivity.this, "Invalid Admin Username/Password", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(MainActivity.this, "Select User/Admin", Toast.LENGTH_SHORT).show();
-//                }
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-//                RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton);
-//                RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
 
-//                if(radioButton.isChecked()) {
                     Intent intent = new Intent(MainActivity.this, UserRegistrationActivity.class);
                     startActivity(intent);
-//                }
-//                else if (radioButton2.isChecked()) {
-//                    Intent intent = new Intent(MainActivity.this, AdminRegistrationActivity.class);
-//                    startActivity(intent);
-//                }
-//                else {
-//                    Toast.makeText(MainActivity.this, "Select User/Admin", Toast.LENGTH_SHORT).show();
-//                }
+
             }
         });
     }
-//------------------------------------------------------------------------------------------------------------------
-// uncomment this part for sms working
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        ProgressBar pb = findViewById(R.id.progress);
-//        pb.setVisibility(View.GONE);
-//        LinearLayout root = findViewById(R.id.root);
-//        root.setVisibility(View.VISIBLE);
-//    }
-//
-//    ValueEventListener valueEventListener = new ValueEventListener() {
-//        @Override
-//        public void onDataChange(DataSnapshot dataSnapshot) {
-//            if (dataSnapshot.exists()) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    user = snapshot.getValue(User.class);
-//                    openOtpScreen(user.getPhone().toString());
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void onCancelled(DatabaseError databaseError) {
-//
-//            ProgressBar pb = findViewById(R.id.progress);
-//            pb.setVisibility(View.GONE);
-//            LinearLayout root = findViewById(R.id.root);
-//            root.setVisibility(View.VISIBLE);
-//        }
-//    };
-//
-//    public void sendSMS(View view){
-//
-//        SmsManager mySmsManager = SmsManager.getDefault();
-//        mySmsManager.sendTextMessage("5544",null, "1234", null, null);
-//    }
-//
-//
-//    public void openOtpScreen(String phoneNumber){
-//        Intent intent = new Intent(MainActivity.this, OtpActivity.class);
-//                                        intent.putExtra("phone", phoneNumber);
-//                                        startActivity(intent);
-//    }
-// ----------------------------------------------------------------------------------------------------------
 
-
-
-// -----------------------------------------------------------------------------------
-// this way sms do not work
-//    protected void sendSMSMessage() {
-//
-//
-//        if (ContextCompat.checkSelfPermission(this,
-//                Manifest.permission.SEND_SMS)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                    Manifest.permission.SEND_SMS)) {
-//            } else {
-//                ActivityCompat.requestPermissions(this,
-//                        new String[]{Manifest.permission.SEND_SMS},
-//                        MY_PERMISSIONS_REQUEST_SEND_SMS);
-//            }
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
-//        switch (requestCode) {
-//            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
-//                if (grantResults.length > 0
-//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    SmsManager smsManager = SmsManager.getDefault();
-//                    smsManager.sendTextMessage("5554", null, "1234", null, null);
-//                    Toast.makeText(getApplicationContext(), "OTP sent.",
-//                            Toast.LENGTH_LONG).show();
-//                } else {
-//                    Toast.makeText(getApplicationContext(),
-//                            "OTP failed, please try again.", Toast.LENGTH_LONG).show();
-//                    return;
-//                }
-//            }
-//        }
-//
-//    }
-//-----------------------------------------------------------------------------------------------------------------
 }

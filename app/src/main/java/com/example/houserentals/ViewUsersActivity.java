@@ -19,21 +19,17 @@ import java.util.List;
 
 public class ViewUsersActivity extends AppCompatActivity {
 
-    //the recyclerview
+
     RecyclerView recyclerView;
 
-    //adapter object
     private UsersAdapter adapter;
 
-    //database reference
     private DatabaseReference mDatabase;
 
     private FirebaseAuth mAuth;
 
-    //progress dialog
     private ProgressDialog progressDialog;
 
-    //a list to store all the products
     List<User> userList;
 
     @Override
@@ -43,40 +39,35 @@ public class ViewUsersActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the advertisementlist
         userList = new ArrayList<>();
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
         mAuth = FirebaseAuth.getInstance();
 
-
-
-       //adding an event listener to fetch values
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    //dismissing the progress dialog
+
                     progressDialog.dismiss();
 
-                    //iterating through all the values in database
+
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         User user = postSnapshot.getValue(User.class);
-//                    Upload upload = postSnapshot.getValue(Upload.class);
+
                         if (! user.getEmail().equalsIgnoreCase("admin@hrental.ca"))
                         {
                             userList.add(user);
                         }
 
                     }
-                    //creating adapter
+
                     adapter = new UsersAdapter(getApplicationContext(), userList);
 
-                    //adding adapter to recyclerview
+
                     recyclerView.setAdapter(adapter);
                 }
 

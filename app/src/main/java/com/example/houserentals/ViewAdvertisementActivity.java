@@ -25,21 +25,17 @@ import java.util.List;
 
 public class ViewAdvertisementActivity extends AppCompatActivity {
 
-    //the recyclerview
+
     RecyclerView recyclerView;
 
-    //adapter object
     private AdvertisementAdapter adapter;
 
-    //database reference
     private DatabaseReference mDatabase;
 
     private FirebaseAuth mAuth;
 
-    //progress dialog
     private ProgressDialog progressDialog;
 
-    //a list to store all the products
     List<Advertisement> advertisementList;
 
     @Override
@@ -84,12 +80,10 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the advertisementlist
         advertisementList = new ArrayList<>();
 
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
@@ -98,17 +92,16 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
 
         if (viewAds.equals("myAds")){
 
-            //adding an event listener to fetch values
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    //dismissing the progress dialog
+
                     progressDialog.dismiss();
 
-                    //iterating through all the values in database
+
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         Advertisement advertisement = postSnapshot.getValue(Advertisement.class);
-//                    Upload upload = postSnapshot.getValue(Upload.class);
+
                         String userId = advertisement.getUserId();
                         String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         if( userId !=null && userId.equals(currentUserId)){
@@ -116,10 +109,10 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
                         }
 
                     }
-                    //creating adapter
+
                     adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList, viewAds);
 
-                    //adding adapter to recyclerview
+
                     recyclerView.setAdapter(adapter);
                 }
 
@@ -131,23 +124,23 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
         }
         else {
 
-            //adding an event listener to fetch values
+
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    //dismissing the progress dialog
+
                     progressDialog.dismiss();
 
-                    //iterating through all the values in database
+
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         Advertisement advertisement = postSnapshot.getValue(Advertisement.class);
-//                    Upload upload = postSnapshot.getValue(Upload.class);
+
                         advertisementList.add(advertisement);
                     }
-                    //creating adapter
+
                     adapter = new AdvertisementAdapter(getApplicationContext(), advertisementList, viewAds);
 
-                    //adding adapter to recyclerview
+
                     recyclerView.setAdapter(adapter);
                 }
 
@@ -159,11 +152,6 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
 
         }
 
-//        //creating recyclerview adapter
-//        AdvertisementAdapter adapter = new AdvertisementAdapter(this, advertisementList);
-//
-//        //setting adapter to recyclerview
-//        recyclerView.setAdapter(adapter);
     }
     private void filterByPrice(int minPrice, int maxPrice, String viewAds){
         List<Advertisement> sortedAdvertisementList = new ArrayList<>();
@@ -194,7 +182,7 @@ public class ViewAdvertisementActivity extends AppCompatActivity {
         }
         adapter = new AdvertisementAdapter(getApplicationContext(), finalSortedAdvertisementList, viewAds);
 
-        //adding adapter to recyclerview
+
         recyclerView.setAdapter(adapter);
 
 

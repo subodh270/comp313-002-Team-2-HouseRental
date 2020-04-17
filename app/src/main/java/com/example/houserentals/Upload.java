@@ -8,8 +8,7 @@ public class Upload {
     public String imgName;
     public String url;
 
-    // Default constructor required for calls to
-    // DataSnapshot.getValue(User.class)
+
     public Upload() {
     }
 

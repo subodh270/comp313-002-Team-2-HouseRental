@@ -33,10 +33,10 @@ import java.io.IOException;
 
 public class PostAdvertisementActivity extends AppCompatActivity implements View.OnClickListener{
 
-    //constant to track image chooser intent
+
     private static final int PICK_IMAGE_REQUEST = 234;
 
-    //view objects
+
     private Button buttonChoose;
     private Button buttonUpload;
     private EditText imgName;
@@ -48,10 +48,10 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
     private EditText city ;
     private EditText price;
 
-    //uri to store file
+
     private Uri filePath;
 
-    //firebase objects
+
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -68,9 +68,9 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
 
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
-//        imgName = (EditText) findViewById(R.id.editText34);
+
         imageView = (ImageView) findViewById(R.id.imageView);
-//        textViewShow = (TextView) findViewById(R.id.textViewShow);
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
@@ -78,7 +78,7 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
 
         buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
-//        textViewShow.setOnClickListener(this);
+
 
     }
 
@@ -110,25 +110,25 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
     }
 
     private void uploadFile() {
-        //checking if file is available
+
         if (filePath != null) {
-            //displaying progress dialog while image is uploading
+
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading");
             progressDialog.show();
 
-            //getting the storage reference
+
             StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(filePath));
 
-            //adding the file to reference
+
             sRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //dismissing the progress dialog
+
                             progressDialog.dismiss();
 
-                            //displaying success toast
+
                             Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
 
                             Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
@@ -140,17 +140,11 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
                                     String uploadId = mDatabase.push().getKey();
 
                                     Advertisement advertisement  = new Advertisement(uploadId, title.getText().toString(), description.getText().toString(), city.getText().toString(), price.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(), photoLink);
-                                    //adding an upload to firebase database
+
 
                                     mDatabase.child(uploadId).setValue(advertisement);
                                 }
                             });
-                            //creating the upload object to store uploaded image details
-//                            Upload upload = new Upload(imgName.getText().toString().trim(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-//                            Advertisement advertisement  = new Advertisement(title.getText().toString(), description.getText().toString(), city.getText().toString(), price.getText().toString(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-//                            //adding an upload to firebase database
-//                            String uploadId = mDatabase.push().getKey();
-//                            mDatabase.child(uploadId).setValue(advertisement);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -163,13 +157,13 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            //displaying the upload progress
+
                             double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
                         }
                     });
         } else {
-            //display an error if no file is selected
+
         }
     }
 
@@ -180,8 +174,5 @@ public class PostAdvertisementActivity extends AppCompatActivity implements View
         } else if (view == buttonUpload) {
             uploadFile();
         }
-//        else if (view == textViewShow) {
-//
-//        }
     }
 }

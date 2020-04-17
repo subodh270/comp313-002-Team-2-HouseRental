@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminWelcomeActivity extends AppCompatActivity {
 
-    //firebase auth object
+
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -19,7 +19,7 @@ public class AdminWelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_welcome);
 
-        //initializing firebase authentication object
+
         firebaseAuth = FirebaseAuth.getInstance();
 
 
@@ -43,7 +43,6 @@ public class AdminWelcomeActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //starting login activity
                 startActivity(new Intent(AdminWelcomeActivity.this, ViewUsersActivity.class));
 
             }
@@ -53,7 +52,6 @@ public class AdminWelcomeActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //starting login activity
                 startActivity(new Intent(AdminWelcomeActivity.this, UserProfileActivity.class));
 
             }
@@ -62,11 +60,11 @@ public class AdminWelcomeActivity extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //logging out the user
+
                 firebaseAuth.signOut();
-                //closing activity
+
                 finish();
-                //starting login activity
+
                 startActivity(new Intent(AdminWelcomeActivity.this, MainActivity.class));
 
             }

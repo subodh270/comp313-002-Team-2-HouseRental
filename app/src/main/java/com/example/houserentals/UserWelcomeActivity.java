@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class UserWelcomeActivity extends AppCompatActivity {
 
-    //firebase auth object
+
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -22,17 +22,10 @@ public class UserWelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_welcome);
 
-        //initializing firebase authentication object
+
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //if the user is not logged in
-        //that means current user will return null
-//        if(firebaseAuth.getCurrentUser() == null){
-//            //closing this activity
-//            finish();
-//            //starting login activity
-//            startActivity(new Intent(UserWelcomeActivity.this, MainActivity.class));
-//        }
+
 
         Button postAd = (Button) findViewById(R.id.button9);
         Button viewAds = (Button) findViewById(R.id.button10);
@@ -84,11 +77,11 @@ public class UserWelcomeActivity extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //logging out the user
+
                 firebaseAuth.signOut();
-                //closing activity
+
                 finish();
-                //starting login activity
+
                 startActivity(new Intent(UserWelcomeActivity.this, MainActivity.class));
 
             }

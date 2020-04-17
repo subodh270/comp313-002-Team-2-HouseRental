@@ -46,7 +46,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-//        findViewById(R.id.button).setOnClickListener(this);
         registerUser.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -70,11 +69,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 record[7]= city;
                 record[8]= postalCode;
                 Log.d("Username: ", record[1]);
-                //populate the row with some values
+
                 ContentValues values = new ContentValues();
                 for (int i=1;i<record.length;i++)
                 values.put(fields[i],record[i]);
-                //add the row to the database
+
                 db.addRecord(values, "User", fields, record);
 
 
@@ -114,12 +113,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-//                if (phone.length() != 10) {
-//                    phoneEditText.setError(getString(R.string.input_error_phone_invalid));
-//                    phoneEditText.requestFocus();
-//                    return;
-//                }
-
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -145,7 +138,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(UserRegistrationActivity.this, "registration_success", Toast.LENGTH_LONG).show();
                                             } else {
-                                                //display a failure message
+
                                             }
                                         }
                                     });
@@ -157,10 +150,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
                         });
 
 
-//                String id= databaseUsers.push().getKey();
-//                User user= new User(email,name,phone);
-//                databaseUsers.child(id).setValue(user);
-//                Toast.makeText(UserRegistrationActivity.this,"User Added",Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(UserRegistrationActivity.this, UserInformationActivity.class);
                 intent.putExtra("username", username);
@@ -169,12 +158,4 @@ public class UserRegistrationActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        if (mAuth.getCurrentUser() != null) {
-//            //handle the already login user
-//        }
-//    }
 }
